@@ -55,7 +55,8 @@
 #define PBKDF2_SHA256_SCHEME_NAME "PBKDF2_SHA256"
 #define PBKDF2_SHA256_NAME_LEN    13
 #define GOST_YESCRYPT_SCHEME_NAME "GOST_YESCRYPT"
-
+#define BCRYPT_SCHEME_NAME        "BCRYPT"
+#define BCRYPT_NAME_LEN           5
 
 SECStatus sha_salted_hash(char *hash_out, const char *pwd, struct berval *salt, unsigned int secOID);
 int sha_pw_cmp(const char *userpwd, const char *dbpwd, unsigned int shaLen);
@@ -93,6 +94,8 @@ int pbkdf2_sha256_close(Slapi_PBlock *pb);
 SECStatus pbkdf2_sha256_hash(char *hash_out, size_t hash_out_len, SECItem *pwd, SECItem *salt, PRUint32 iterations);
 char *pbkdf2_sha256_pw_enc(const char *pwd);
 int pbkdf2_sha256_pw_cmp(const char *userpwd, const char *dbpwd);
+int bcrypt_pw_cmp(const char *userpwd, const char *dbpwd);
+char * bcrypt_pw_enc(const char *pwd);
 
 /* For testing pbkdf2 only */
 uint64_t pbkdf2_sha256_benchmark_iterations(void);

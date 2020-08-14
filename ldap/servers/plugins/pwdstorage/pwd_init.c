@@ -54,6 +54,8 @@ static Slapi_PluginDesc pbkdf2_sha256_pdesc = {"pbkdf2-sha256-password-storage-s
 
 static Slapi_PluginDesc gost_yescrypt_pdesc = {"gost-yescrypt-password-storage-scheme", VENDOR, DS_PACKAGE_VERSION, "Yescrypt KDF algorithm (Streebog256)"};
 
+static Slapi_PluginDesc bcrypt_pdesc = {"bcrypt_pwd_storage_scheme", VENDOR, DS_PACKAGE_VERSION, "Brypt hash algorithm"};
+
 static char *plugin_name = "NSPwdStoragePlugin";
 
 int
@@ -446,4 +448,26 @@ gost_yescrypt_pwd_storage_scheme_init(Slapi_PBlock *pb)
 
     slapi_log_err(SLAPI_LOG_PLUGIN, plugin_name, "<= gost_yescrypt_pwd_storage_scheme_init %d\n", rc);
     return rc;
+}
+
+int
+bcrypt_pwd_storage_scheme_init(Slapi_PBlock *pb)
+{
+    int rc;
+
+    slapi_log_error( SLAPI_LOG_PLUGIN, plugin_name, "=> bcrypt_pwd_storage_scheme_init\n");
+
+    rc = slapi_pblock_set( pb, SLAPI_PLUGIN_VERSION, (void *) SLAPI_PLUGIN_VERSION_01);
+
+    rc |= slapi_pblock_set( pb, SLAPI_PLUGIN_DESCRIPTION, (void *)&bcrypt_pdesc);
+
+    rc |= slapi_pblock_set(pb, SLAPI_PLUGIN_PWD_STORAGE_SCHEME_ENC_FN, (void *)bcrypt_pw_enc);
+
+    rc |= slapi_pblock_set(pb, SLAPI_PLUGIN_PWD_STORAGE_SCHEME_CMP_FN, (void *)bcrypt_pw_cmp);
+
+    rc |= slapi_pblock_set(pb, SLAPI_PLUGIN_PWD_STORAGE_SCHEME_NAME, BCRYPT_SCHEME_NAME);
+
+    slapi_log_error( SLAPI_LOG_PLUGIN, plugin_name, "<= bcrypt_pwd_storage_scheme_init %d\n",rc);
+
+    return (rc);
 }

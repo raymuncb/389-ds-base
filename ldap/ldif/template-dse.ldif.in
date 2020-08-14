@@ -301,6 +301,17 @@ nsslapd-pluginid: aes-storage-scheme
 nsslapd-pluginprecedence: 1
 
 dn: cn=GOST_YESCRYPT,cn=Password Storage Schemes,cn=plugins,cn=config
+dn: cn=BCRYPT, cn=Password Storage Schemes, cn=plugins, cn=config
+objectclass: top
+objectclass: nsSlapdPlugin
+objectclass: extensibleObject
+cn: BCRYPT
+nsslapd-pluginpath: libpwdstorage-plugin
+nsslapd-plugintype: pwdstoragescheme
+nsslapd-pluginenabled: on
+nsslapd-plugininitfunc: bcrypt_pwd_storage_scheme_init
+
+dn: cn=DES,cn=Password Storage Schemes,cn=plugins,cn=config
 objectclass: top
 objectclass: nsSlapdPlugin
 cn: GOST_YESCRYPT
