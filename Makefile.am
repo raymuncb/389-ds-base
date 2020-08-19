@@ -1627,7 +1627,8 @@ libpwdstorage_plugin_la_SOURCES = ldap/servers/plugins/pwdstorage/clear_pwd.c \
 	ldap/servers/plugins/pwdstorage/ssha_pwd.c \
         ldap/servers/plugins/pwdstorage/pbkdf2_pwd.c \
 	ldap/servers/plugins/pwdstorage/gost_yescrypt.c \
-	ldap/servers/plugins/pwdstorage/bcrypt_pwd.c
+	ldap/servers/plugins/pwdstorage/bcrypt_pwd.c \
+	ldap/servers/plugins/pwdstorage/crypt_blowfish.c
 	$(NULLSTRING)
 
 libpwdstorage_plugin_la_CPPFLAGS = $(AM_CPPFLAGS) $(DSPLUGIN_CPPFLAGS)
