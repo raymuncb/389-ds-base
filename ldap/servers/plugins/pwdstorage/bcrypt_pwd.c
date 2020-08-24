@@ -18,7 +18,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <sys/types.h>
-#include "crypt_blowfish.c"
+#include "crypt_blowfish.h"
 
 #include "pwdstorage.h"
 

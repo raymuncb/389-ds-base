@@ -57,6 +57,9 @@
 #else
 #define BF_SCALE			0
 #endif
+/* Just to make sure the prototypes match the actual definitions */
+#include "crypt_blowfish.h"
+
 
 typedef unsigned int BF_word;
 typedef signed int BF_word_signed;
