@@ -4,6 +4,8 @@ i=1
 max_it=50
 last_pw='IpFR52T1'
 pw=`pwgen -s -1`
+suffix='dc=cc,dc=private,dc=ssystems,dc=de'
+port=389
 echo "generated password: ".$pw
 pw_hash=`php hash_test.php $pw`
 echo $pw_hash
@@ -15,7 +17,7 @@ userPassword: $pw
 
 EOF
 )
-  echo "$LDIF" | ldapmodify -D uid=testuser -p 21107 -h localhost -x -w $last_pw
+  echo "$LDIF" | ldapmodify -D uid=testuser,$suffix -p $port -h localhost -x -w $last_pw
 
 #while [ $i -le $max_it ]
 #do
