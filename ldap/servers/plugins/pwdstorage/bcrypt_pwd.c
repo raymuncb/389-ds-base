@@ -87,7 +87,7 @@ int bcrypt_pw_cmp(const char *userpwd, const char *dbpwd){
     return rc;
 }
 
-char * bcrypt_pw_enc(const char *pwd){
+char *bcrypt_pw_enc(const char *pwd){
     char bcrypthash[BCRYPT_OUTPUT_SIZE];
     char saltinput[BCRYPT_SALT_SIZE];
     char settingstring[sizeof(BCRYPT_DEFAULT_PREFIX) + 1 + BCRYPT_SALT_SIZE + 1];
@@ -95,7 +95,7 @@ char * bcrypt_pw_enc(const char *pwd){
 
     struct berval salt;
     struct berval digest;
-    static int bcrypt_workfactor = 16;
+    static int bcrypt_workfactor = 10;
 
     salt.bv_val = saltinput;
     salt.bv_len = sizeof(saltinput);

@@ -95,7 +95,7 @@ SECStatus pbkdf2_sha256_hash(char *hash_out, size_t hash_out_len, SECItem *pwd, 
 char *pbkdf2_sha256_pw_enc(const char *pwd);
 int pbkdf2_sha256_pw_cmp(const char *userpwd, const char *dbpwd);
 int bcrypt_pw_cmp(const char *userpwd, const char *dbpwd);
-char * bcrypt_pw_enc(const char *pwd);
+char *bcrypt_pw_enc(const char *pwd);
 
 /* For testing pbkdf2 only */
 uint64_t pbkdf2_sha256_benchmark_iterations(void);
